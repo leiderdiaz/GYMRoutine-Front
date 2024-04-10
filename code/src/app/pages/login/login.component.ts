@@ -9,4 +9,10 @@ export class LoginComponent {
   constructor() { }
   ngOnInit() {
   }
+
+
+  login(user: string, password: string){
+    console.log(user, password);
+    
+  }
 }
