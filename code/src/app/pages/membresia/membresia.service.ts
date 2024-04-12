@@ -64,9 +64,7 @@ export class MembresiaService {
       take(1),
       switchMap(membresias => this.httpCliente.post(`http://localhost:3000/api/membresia/`,params)
       .pipe(
-        map((membresia: any) => {
-          console.log('------>',membresia.idUsuario);
-          
+        map((membresia: any) => {          
           return membresia.idUsuario
         }),
         switchMap(id => this.consultarMembresiaPorIdUsuario(id))

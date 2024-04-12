@@ -4,13 +4,15 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { MembresiaComponent } from './pages/membresia/membresia.component';
+import { EjerciciosComponent } from './pages/ejercicios/ejercicios.component';
 const routes: Routes = [
   {
     path: '', children: [
       { path: '', pathMatch: 'full', redirectTo: 'login' },
       {
         path: 'dashboard', component: MainPageComponent, children: [
-          { path: 'membresia', component: MembresiaComponent }
+          { path: 'membresia', component: MembresiaComponent },
+          { path: 'ejercicios', component: EjerciciosComponent}
 
         ]
       },

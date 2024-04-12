@@ -52,6 +52,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { ToastModule } from 'primeng/toast';
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonModule } from 'primeng/button';
+import { EjerciciosComponent } from './pages/ejercicios/ejercicios.component';
 
 
 const materialModules = [
@@ -101,7 +102,8 @@ const materialModules = [
     RegistrationComponent,
     LoginComponent,
     MainPageComponent,
-    MembresiaComponent
+    MembresiaComponent,
+    EjerciciosComponent
   ],
   imports: [
     BrowserModule,

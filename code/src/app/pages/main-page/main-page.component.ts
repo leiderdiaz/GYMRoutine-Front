@@ -13,7 +13,7 @@ export class MainPageComponent implements OnInit{
   ngOnInit(): void {
     this.items = [
       { label: 'Membresia', icon: 'pi pi-fw pi-home', routerLink: 'membresia'  },
-      { label: 'Calendar', icon: 'pi pi-fw pi-calendar' },
+      { label: 'Ejercicios', icon: 'pi pi-fw pi-calendar', routerLink: 'ejercicios' },
       { label: 'Edit', icon: 'pi pi-fw pi-pencil' },
       { label: 'Documentation', icon: 'pi pi-fw pi-file' },
       { label: 'Settings', icon: 'pi pi-fw pi-cog' }
