@@ -6,8 +6,6 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { MembresiaComponent } from './pages/membresia/membresia.component';
 import { EjerciciosComponent } from './pages/ejercicios/ejercicios.component';
 const routes: Routes = [
-  {
-    path: '', children: [
       { path: '', pathMatch: 'full', redirectTo: 'login' },
       {
         path: 'dashboard', component: MainPageComponent, children: [
@@ -16,8 +14,6 @@ const routes: Routes = [
 
         ]
       },
-    ]
-  },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegistrationComponent }
 ];
