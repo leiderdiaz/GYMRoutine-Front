@@ -1,0 +1,42 @@
+<div class="card" *ngIf="create">
+  <section class="fechas p-fluid p-grid p-formgrid" >
+    <div class="fechaInicio">
+      <label for="fechaInicio">Fecha Inicio</label>
+      <p-calendar
+        [showIcon]="true"
+        [(ngModel)]="fechaInicio"
+        [minDate]="minDateValue"
+        [readonlyInput]="true"
+        (onSelect)="changeFinalDate(fechaInicio)"
+      ></p-calendar>
+    </div>
+    <div class="fechaFinal">
+      <label for="fechaFinal">Fecha final</label>
+      <p-calendar
+        [showIcon]="true"
+        [(ngModel)]="fechaFinal"
+        [minDate]="minDateValueAfter"
+        [minDate]="minDateValue"
+        [readonlyInput]="true"
+      ></p-calendar>
+    </div>
+    <p-button
+      label="Submit"
+      (onClick)="createMembresia(fechaInicio, fechaFinal)"
+    ></p-button>
+  </section>
+</div>
+<div class="card" *ngFor="let mem of membresias">
+  <div class="ca">
+    <h3>Dias Restantes: {{ mem.diasRestantes }}</h3>
+    <p-button
+      icon="pi pi-trash"
+      [rounded]="true"
+      severity="danger"
+      size="small"
+      (onClick)="deleteById(mem.id)"
+    ></p-button>
+  </div>
+  <h4>Fecha de inicio: {{ mem.fechaInicio }}</h4>
+  <h4>Fecha de final: {{ mem.fechaFin }}</h4>
+</div>

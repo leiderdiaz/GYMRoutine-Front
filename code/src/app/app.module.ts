@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { CommonModule } from '@angular/common';
+import {CalendarModule} from 'primeng/calendar';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { PortalModule } from '@angular/cdk/portal';
@@ -45,6 +45,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { MainPageComponent } from './pages/main-page/main-page.component';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { MembresiaComponent } from './pages/membresia/membresia.component'; 
+import { ProgressBarModule } from 'primeng/progressbar';
+import { ToastModule } from 'primeng/toast';
+import { HttpClientModule } from '@angular/common/http';
+import { ButtonModule } from 'primeng/button';
+
 
 const materialModules = [
   CdkTreeModule,
@@ -78,7 +86,12 @@ const materialModules = [
   MatGridListModule,
   MatRadioModule,
   MatDatepickerModule,
-  MatTooltipModule
+  MatTooltipModule,
+  TabMenuModule,
+  ProgressBarModule,
+  ToastModule,
+  ButtonModule,
+  CalendarModule
 ];
 @NgModule({
   declarations: [
@@ -86,7 +99,9 @@ const materialModules = [
     HeaderComponent,
     FooterComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    MainPageComponent,
+    MembresiaComponent
   ],
   imports: [
     BrowserModule,
@@ -95,6 +110,7 @@ const materialModules = [
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ...materialModules
   ],
   exports: [...materialModules],
