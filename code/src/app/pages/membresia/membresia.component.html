@@ -38,18 +38,26 @@
         (onClick)="deleteById(mem.id)"
       ></p-button>
     </div>
-    <p-splitter [style]="{height : '50px'}" styleClass="mb-5" class="splitter">
+    <p-splitter [style]="{ height: '50px' }" styleClass="mb-5" class="splitter">
       <ng-template pTemplate>
-          <div class="cole">Fecha de inicio: {{ mem.fechaInicio }}</div>
+        <div class="cole">Fecha de inicio: {{ mem.fechaInicio }}</div>
       </ng-template>
       <ng-template pTemplate>
-          <div class="cole flex align-items-center justify-content-center">Fecha de final: {{ mem.fechaFin }}</div>
+        <div class="cole flex align-items-center justify-content-center">
+          Fecha de final: {{ mem.fechaFin }}
+        </div>
       </ng-template>
     </p-splitter>
     <p-divider></p-divider>
-    <div class="cole flex align-items-center justify-content-center">Progreso restante</div>
-    <p-progressBar  [value]="value"></p-progressBar>
+    <div class="cole flex align-items-center justify-content-center">
+      <h3>Progreso restante</h3>
+      <mat-progress-spinner 
+      [diameter]="200" 
+      class="example-margin" 
+      [value]="value">
+      </mat-progress-spinner>
+      <div style="position:relative; top: -108px; left: 5px;"> {{value}}% </div>
+    </div>
+    <!--     <p-progressBar  [value]="value"></p-progressBar> -->
   </div>
 </p-card>
-
-
