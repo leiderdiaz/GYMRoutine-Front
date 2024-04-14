@@ -53,6 +53,10 @@ import { ToastModule } from 'primeng/toast';
 import { HttpClientModule } from '@angular/common/http';
 import { ButtonModule } from 'primeng/button';
 import { EjerciciosComponent } from './pages/ejercicios/ejercicios.component';
+import { CardModule } from 'primeng/card';
+import { SplitterModule } from 'primeng/splitter';
+import { DividerModule } from 'primeng/divider';
+
 
 
 const materialModules = [
@@ -92,7 +96,10 @@ const materialModules = [
   ProgressBarModule,
   ToastModule,
   ButtonModule,
-  CalendarModule
+  CalendarModule,
+  CardModule,
+  SplitterModule,
+  DividerModule,
 ];
 @NgModule({
   declarations: [

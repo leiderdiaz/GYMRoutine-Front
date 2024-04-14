@@ -14,7 +14,6 @@ body {
 
 .card {
     background: var(--surface-card);
-    padding: 2rem;
     border-radius: 10px;
     margin-bottom: 1rem;
 }
@@ -35,4 +34,17 @@ body {
 
 .fechas {
     padding-bottom: 1rem;
+}
+.cardshow{
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    
+}
+
+.cole {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
 }

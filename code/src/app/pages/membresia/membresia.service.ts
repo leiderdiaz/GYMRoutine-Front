@@ -34,14 +34,30 @@ export class MembresiaService {
         currentDate = new Date().toJSON().slice(0, 10);
 
         membresias = membresias.map((membresia: any) => {
+          let Difference_In_Days; Number;
           const fechaFin = new Date(membresia.fechaFin)
-          let Difference_In_Time = fechaFin.getTime() - date.getTime();
-          let Difference_In_Days = Math.round(Difference_In_Time / (1000 * 3600 * 24));
+          const fechaInicio = new Date(membresia.fechaInicio)
+          const fechaHoy = new Date(currentDate)
 
+          let Difference_In_Time_with_today = fechaFin.getTime() - fechaHoy.getTime();
+          let Difference_In_Time = fechaFin.getTime() - fechaInicio.getTime();
+
+          const Difference_In_Days_total = Math.round(Difference_In_Time / (1000 * 3600 * 24));
+          const Difference_In_Days_today = Math.round(Difference_In_Time_with_today / (1000 * 3600 * 24));
+          if (fechaHoy >= fechaInicio) {
+            
+            Difference_In_Days = Difference_In_Days_today
+          } else {
+            Difference_In_Days = Difference_In_Days_total
+          }
+          
+          const percent = Difference_In_Days * (100/Difference_In_Days_total)
+          
           return {
             ...membresia,
             fechaHoy: currentDate,
-            diasRestantes: Difference_In_Days
+            diasRestantes: Difference_In_Days,
+            percent: percent
           }
         })
         this._membresia.next(membresias)
@@ -62,13 +78,13 @@ export class MembresiaService {
   crearMembresia(params: any): Observable<any> {
     return this.membresias$.pipe(
       take(1),
-      switchMap(membresias => this.httpCliente.post(`http://localhost:3000/api/membresia/`,params)
-      .pipe(
-        map((membresia: any) => {          
-          return membresia.idUsuario
-        }),
-        switchMap(id => this.consultarMembresiaPorIdUsuario(id))
-      )
+      switchMap(membresias => this.httpCliente.post(`http://localhost:3000/api/membresia/`, params)
+        .pipe(
+          map((membresia: any) => {
+            return membresia.idUsuario
+          }),
+          switchMap(id => this.consultarMembresiaPorIdUsuario(id))
+        )
       )
     )
   }
