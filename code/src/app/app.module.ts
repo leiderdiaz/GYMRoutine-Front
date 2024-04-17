@@ -57,8 +57,6 @@ import { CardModule } from 'primeng/card';
 import { SplitterModule } from 'primeng/splitter';
 import { DividerModule } from 'primeng/divider';
 
-
-
 const materialModules = [
   CdkTreeModule,
   MatAutocompleteModule,
@@ -107,10 +105,7 @@ const materialModules = [
     HeaderComponent,
     FooterComponent,
     RegistrationComponent,
-    LoginComponent,
-    MainPageComponent,
-    MembresiaComponent,
-    EjerciciosComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
