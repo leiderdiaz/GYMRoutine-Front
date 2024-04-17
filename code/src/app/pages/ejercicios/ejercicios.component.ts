@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EjerciciosService} from './ejercicios.service';
+import { EjerciciosService } from './ejercicios.service';
 
 @Component({
   selector: 'app-ejercicios',
@@ -14,15 +14,15 @@ export class EjerciciosComponent {
   tipoSeleccionado: number | null = null;
   dificultadSeleccionada: number | null = null;
 
-  constructor(private ejerciciosService: EjerciciosService) {}
+  constructor(private ejerciciosService: EjerciciosService) { }
 
-  ngOnInit(): void{
+  ngOnInit(): void {
     this.getTipos();
     this.getDificultades();
     this.getEjercicios();
   }
 
-  getEjercicios(): void{
+  getEjercicios(): void {
     this.ejerciciosService.getEjercicios(this.tipoSeleccionado, this.dificultadSeleccionada)
       .subscribe(
         (data) => {
@@ -34,7 +34,7 @@ export class EjerciciosComponent {
       );
   }
 
-  getTipos(): void{
+  getTipos(): void {
     this.ejerciciosService.getTipos()
       .subscribe(
         (data) => {
@@ -46,7 +46,7 @@ export class EjerciciosComponent {
       );
   }
 
-  getDificultades(): void{
+  getDificultades(): void {
     this.ejerciciosService.getDificultades()
       .subscribe(
         (data) => {

@@ -1,2 +1,26 @@
-<p>ejercicios works!</p>
-<h3>PAGINA EN CONSTRUUCCION</h3>
+<div class="filter-section">
+    <label for="tipo">Filtrar por tipo:</label>
+    <select id="tipo" [(ngModel)]="tipoSeleccionado" (change)="getEjercicios()">
+        <!-- Opción para eliminar el filtro -->
+        <option value="null">Sin filtro</option>
+        <!-- Opciones tipos de ejercicios-->
+        <option *ngFor="let tipo of tipos" [value]="tipo.id">{{ tipo.nombre }}</option>
+    </select>
+
+    <label for="dificultad">Filtrar por dificultad:</label>
+    <select id="dificultad" [(ngModel)]="dificultadSeleccionada" (change)="getEjercicios()">
+        <!-- Opción para eliminar el filtro -->
+        <option value="null">Sin filtro</option>
+        <!-- Opciones dificultades de los ejercicios-->
+        <option *ngFor="let dificultad of dificultades" [value]="dificultad.id">{{ dificultad.nombre }}</option>
+    </select>
+</div>
+
+<div class="ejercicios-list">
+    <h2>Listado de Ejercicios</h2>
+    <ul>
+        <li *ngFor="let ejercicio of ejercicios">
+            {{ ejercicio.nombre }} - Tipo: {{ ejercicio.tipo.nombre }} - Dificultad: {{ ejercicio.dificultad.nombre }}
+        </li>
+    </ul>
+</div>
