@@ -16,12 +16,12 @@ export class RegistrationComponent {
   ) {}
   ngOnInit() {}
 
-  create(user: String, nombre: String, apellido: String, password: String) {
+  create(user: String, nombre: String, apellido: String, clave: String) {
     const params = {
       username: user,
       nombre: nombre,
       apellido: apellido,
-      password: password,
+      clave: clave,
     };
     this.registroService.createUser(params).subscribe((res) => {
       if (res !== null || res !== undefined) {

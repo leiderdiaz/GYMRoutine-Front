@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable, map, switchMap, take, tap } from 'rxjs';
 })
 export class MembresiaService {
   private _membresia: BehaviorSubject<any> = new BehaviorSubject(null);
-  constructor(private httpCliente: HttpClient) {}
+  constructor(private httpCliente: HttpClient) { }
 
   /**
    * @Accesors
@@ -90,7 +90,7 @@ export class MembresiaService {
             map((membresia: any) => {
               return membresia.idUsuario;
             }),
-            switchMap((id) => this.consultarMembresiaPorIdUsuario(id))
+            switchMap((membresia: any) => this.consultarMembresiaPorIdUsuario(membresia.idUsuario))
           )
       )
     );

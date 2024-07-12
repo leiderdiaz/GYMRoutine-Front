@@ -1,19 +1,10 @@
 <br />
-<div
-  class="filter-section"
-  fxLayout="row"
-  fxLayout.lt-md="column"
-  fxLayoutAlign.gt-sm="space-between start"
->
+<div class="filter-section" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.gt-sm="space-between start">
   <div fxFill fxFlex="49">
     <label for="tipo">Filtrar por tipo:</label>
-    <mat-select
-      id="tipo"
-      [(ngModel)]="tipoSeleccionado"
-      placeholder="Sin filtro"
-    >
-      <mat-option value="">Sin filtro</mat-option>
-      <mat-option *ngFor="let tipo of tipos" [value]="tipo.id">
+    <mat-select id="tipo" [(ngModel)]="tipoSeleccionado" placeholder="Sin filtro">
+      <mat-option [value]="">Sin filtro</mat-option>
+      <mat-option *ngFor="let tipo of tipos" [value]="tipo.nombre">
         {{ tipo.nombre }}
       </mat-option>
     </mat-select>
@@ -21,40 +12,20 @@
 
   <div fxFill fxFlex="49">
     <label for="dificultad">Filtrar por dificultad:</label>
-    <mat-select
-      id="dificultad"
-      [(ngModel)]="dificultadSeleccionada"
-      placeholder="Sin filtro"
-    >
-      <mat-option value="">Sin filtro</mat-option>
-      <mat-option
-        *ngFor="let dificultad of dificultades"
-        [value]="dificultad.id"
-      >
+    <mat-select id="dificultad" [(ngModel)]="dificultadSeleccionada" placeholder="Sin filtro">
+      <mat-option [value]="">Sin filtro</mat-option>
+      <mat-option *ngFor="let dificultad of dificultades" [value]="dificultad.nombre">
         {{ dificultad.nombre }}
       </mat-option>
     </mat-select>
   </div>
 </div>
-<div
-  fxLayoutAlign.gt-sm="space-between start"
-  gdAlignColumns="center"
-  gdAlignRows="center"
->
-  <button
-    mat-stroked-button
-    color="primary"
-    (click)="getEjercicios()"
-    class="btn-block"
-  >
+<div fxLayoutAlign.gt-sm="space-between start" gdAlignColumns="center" gdAlignRows="center">
+  <button mat-stroked-button color="primary" (click)="getEjercicios()" class="btn-block">
     Filtrar
   </button>
 </div>
-<div
-  fxLayoutAlign.gt-sm="space-between start"
-  gdAlignColumns="center"
-  gdAlignRows="center"
->
+<div fxLayoutAlign.gt-sm="space-between start" gdAlignColumns="center" gdAlignRows="center">
   <h2>Listado de Ejercicios</h2>
 </div>
 <div *ngIf="dataSource">
@@ -63,13 +34,19 @@
       <mat-header-cell *matHeaderCellDef>Ejercicio</mat-header-cell>
       <mat-cell *matCellDef="let row">{{ row.nombre }}</mat-cell>
     </ng-container>
+    <ng-container matColumnDef="tipo">
+      <mat-header-cell *matHeaderCellDef>Musculo trabajado</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.tipoEjercicio }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="dificultad">
+      <mat-header-cell *matHeaderCellDef>Dificultad</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.dificultadEjercicio }}</mat-cell>
+    </ng-container>
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef></mat-header-cell>
       <mat-cell *matCellDef="let row">
         <button mat-icon-button>
-          <mat-icon color="primary"
-            ><span class="material-symbols-outlined"> live_tv </span></mat-icon
-          >
+          <mat-icon color="primary"><span class="material-symbols-outlined"> live_tv </span></mat-icon>
         </button>
       </mat-cell>
     </ng-container>

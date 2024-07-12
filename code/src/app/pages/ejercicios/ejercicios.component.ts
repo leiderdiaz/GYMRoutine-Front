@@ -11,12 +11,12 @@ export class EjerciciosComponent {
   ejercicios: any[] = [];
   tipos: any[] = [];
   dificultades: any[] = [];
-  tipoSeleccionado: number | null = null;
-  dificultadSeleccionada: number | null = null;
+  tipoSeleccionado: string | null = null;
+  dificultadSeleccionada: string | null = null;
 
-  displayedColumns: string[] = ['nombre', 'actions'];
+  displayedColumns: string[] = ['nombre', 'tipo', 'dificultad', 'actions'];
   dataSource!: MatTableDataSource<any[]>;
-  constructor(private ejerciciosService: EjerciciosService) {}
+  constructor(private ejerciciosService: EjerciciosService) { }
 
   ngOnInit(): void {
     this.getTipos();

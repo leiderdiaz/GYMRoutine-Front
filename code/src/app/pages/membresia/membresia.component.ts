@@ -25,7 +25,7 @@ export class MembresiaComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.membresia = this.membresiaService
-      .consultarMembresiaPorIdUsuario('1')
+      .consultarMembresiaPorIdUsuario('668c0d2090a6fda3a38d25e9')
       .subscribe();
 
     this.membresiaService.membresias$
@@ -47,7 +47,7 @@ export class MembresiaComponent implements OnInit, OnDestroy {
     const fechaI = this.parseDateToString(fechaInicio);
     const fechaF = this.parseDateToString(fechaFin);
     const params = {
-      idUsuario: '1',
+      idUsuario: '668c0d2090a6fda3a38d25e9',
       fechaInicio: fechaI,
       fechaFin: fechaF,
     };
@@ -67,13 +67,7 @@ export class MembresiaComponent implements OnInit, OnDestroy {
   }
 
   parseDateToString(date: Date) {
-    return (
-      date.getFullYear() +
-      '-' +
-      ('0' + (date.getMonth() + 1)).slice(-2) +
-      '-' +
-      ('0' + date.getDate()).slice(-2)
-    );
+    return date.toISOString().split('.')[0];
   }
 
   deleteById(id: string) {

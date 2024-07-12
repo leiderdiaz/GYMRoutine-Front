@@ -56,6 +56,7 @@ import { CardModule } from 'primeng/card';
 import { SplitterModule } from 'primeng/splitter';
 import { DividerModule } from 'primeng/divider';
 import { ConsultaUsuariosComponent } from './pages/consulta-usuarios/consulta-usuarios.component';
+import { RutinasComponent } from './rutinas/rutinas.component';
 
 const materialModules = [
   CdkTreeModule,
@@ -110,6 +111,7 @@ const materialModules = [
     MembresiaComponent,
     MainPageComponent,
     ConsultaUsuariosComponent,
+    RutinasComponent,
   ],
   imports: [
     BrowserModule,

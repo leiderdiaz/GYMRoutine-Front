@@ -9,23 +9,22 @@ export class EjerciciosService {
   private apiEjerciciosUrl = 'http://localhost:8094/api/ejercicios/list';
   private apiTipoEjerciciosUrl = 'http://localhost:8094/api/tipoEjercicio/list';
   private apiDificultadEjerciciosUrl =
-    'http://localhost:8094/api/dificultadejercicios/list';
-  constructor(private http: HttpClient) {}
+    'http://localhost:8094/api/dificultadEjercicios/list';
+  constructor(private http: HttpClient) { }
 
   getEjercicios(
-    idTipoEjercicio: number | null,
-    idDificultadEjercicio: number | null
+    tipoEjercicio: string | null,
+    dificultadEjercicio: string | null
   ): Observable<any[]> {
     let url = this.apiEjerciciosUrl;
     //Verificar si hay filtro por tipo y agregarlo al url del endpoint
-    if (idTipoEjercicio !== null) {
-      url += `?idTipoEjercicio=${idTipoEjercicio}`;
-    } 
+    if (tipoEjercicio !== null && tipoEjercicio !== undefined) {
+      url += `?tipoEjercicio=${tipoEjercicio}`;
+    }
     //Verificar si hay filtro por dificultad y agregarlo al url del endpoint
-    if (idDificultadEjercicio !== null) {
-      url += `${
-        url.includes('?') ? '&' : '?'
-      }idDificultadEjercicio=${idDificultadEjercicio}`;
+    if (dificultadEjercicio !== null && dificultadEjercicio !== undefined) {
+      url += `${url.includes('?') ? '&' : '?'
+        }dificultadEjercicio=${dificultadEjercicio}`;
     }
     return this.http.get<any[]>(url);
   }
