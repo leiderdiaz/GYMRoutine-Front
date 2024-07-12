@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HeaderComponent } from './shared/header/header.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import {CalendarModule} from 'primeng/calendar';
+import { CalendarModule } from 'primeng/calendar';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { CdkTreeModule } from '@angular/cdk/tree';
 import { PortalModule } from '@angular/cdk/portal';
@@ -46,7 +46,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { TabMenuModule } from 'primeng/tabmenu';
-import { MembresiaComponent } from './pages/membresia/membresia.component'; 
+import { MembresiaComponent } from './pages/membresia/membresia.component';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ToastModule } from 'primeng/toast';
 import { HttpClientModule } from '@angular/common/http';
@@ -55,6 +55,7 @@ import { EjerciciosComponent } from './pages/ejercicios/ejercicios.component';
 import { CardModule } from 'primeng/card';
 import { SplitterModule } from 'primeng/splitter';
 import { DividerModule } from 'primeng/divider';
+import { ConsultaUsuariosComponent } from './pages/consulta-usuarios/consulta-usuarios.component';
 
 const materialModules = [
   CdkTreeModule,
@@ -106,7 +107,9 @@ const materialModules = [
     RegistrationComponent,
     LoginComponent,
     EjerciciosComponent,
-    MembresiaComponent
+    MembresiaComponent,
+    MainPageComponent,
+    ConsultaUsuariosComponent,
   ],
   imports: [
     BrowserModule,
@@ -116,14 +119,11 @@ const materialModules = [
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ...materialModules
+    ...materialModules,
   ],
   exports: [...materialModules],
-  providers: [
-    provideAnimationsAsync()
-  ],
+  providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class AppModule { }
-
+export class AppModule {}

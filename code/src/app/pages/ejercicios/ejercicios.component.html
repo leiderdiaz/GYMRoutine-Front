@@ -1,26 +1,79 @@
-<div class="filter-section">
+<br />
+<div
+  class="filter-section"
+  fxLayout="row"
+  fxLayout.lt-md="column"
+  fxLayoutAlign.gt-sm="space-between start"
+>
+  <div fxFill fxFlex="49">
     <label for="tipo">Filtrar por tipo:</label>
-    <select id="tipo" [(ngModel)]="tipoSeleccionado" (change)="getEjercicios()">
-        <!-- Opción para eliminar el filtro -->
-        <option value="null">Sin filtro</option>
-        <!-- Opciones tipos de ejercicios-->
-        <option *ngFor="let tipo of tipos" [value]="tipo.id">{{ tipo.nombre }}</option>
-    </select>
+    <mat-select
+      id="tipo"
+      [(ngModel)]="tipoSeleccionado"
+      placeholder="Sin filtro"
+    >
+      <mat-option value="">Sin filtro</mat-option>
+      <mat-option *ngFor="let tipo of tipos" [value]="tipo.id">
+        {{ tipo.nombre }}
+      </mat-option>
+    </mat-select>
+  </div>
 
+  <div fxFill fxFlex="49">
     <label for="dificultad">Filtrar por dificultad:</label>
-    <select id="dificultad" [(ngModel)]="dificultadSeleccionada" (change)="getEjercicios()">
-        <!-- Opción para eliminar el filtro -->
-        <option value="null">Sin filtro</option>
-        <!-- Opciones dificultades de los ejercicios-->
-        <option *ngFor="let dificultad of dificultades" [value]="dificultad.id">{{ dificultad.nombre }}</option>
-    </select>
+    <mat-select
+      id="dificultad"
+      [(ngModel)]="dificultadSeleccionada"
+      placeholder="Sin filtro"
+    >
+      <mat-option value="">Sin filtro</mat-option>
+      <mat-option
+        *ngFor="let dificultad of dificultades"
+        [value]="dificultad.id"
+      >
+        {{ dificultad.nombre }}
+      </mat-option>
+    </mat-select>
+  </div>
 </div>
-
-<div class="ejercicios-list">
-    <h2>Listado de Ejercicios</h2>
-    <ul>
-        <li *ngFor="let ejercicio of ejercicios">
-            {{ ejercicio.nombre }} - Tipo: {{ ejercicio.tipo.nombre }} - Dificultad: {{ ejercicio.dificultad.nombre }}
-        </li>
-    </ul>
+<div
+  fxLayoutAlign.gt-sm="space-between start"
+  gdAlignColumns="center"
+  gdAlignRows="center"
+>
+  <button
+    mat-stroked-button
+    color="primary"
+    (click)="getEjercicios()"
+    class="btn-block"
+  >
+    Filtrar
+  </button>
+</div>
+<div
+  fxLayoutAlign.gt-sm="space-between start"
+  gdAlignColumns="center"
+  gdAlignRows="center"
+>
+  <h2>Listado de Ejercicios</h2>
+</div>
+<div *ngIf="dataSource">
+  <mat-table class="mat-elevation-z8" [dataSource]="dataSource">
+    <ng-container matColumnDef="nombre">
+      <mat-header-cell *matHeaderCellDef>Ejercicio</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.nombre }}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef></mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button>
+          <mat-icon color="primary"
+            ><span class="material-symbols-outlined"> live_tv </span></mat-icon
+          >
+        </button>
+      </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"> </mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
 </div>

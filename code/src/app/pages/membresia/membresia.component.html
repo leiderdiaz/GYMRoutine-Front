@@ -1,5 +1,5 @@
 <p-card class="cardshow">
-  <div class="card" *ngIf="create">
+  <div class="card">
     <section class="fechas p-fluid p-grid p-formgrid">
       <div class="fechaInicio">
         <label for="fechaInicio">Fecha Inicio</label>
@@ -51,12 +51,13 @@
     <p-divider></p-divider>
     <div class="cole flex align-items-center justify-content-center">
       <h3>Progreso restante</h3>
-      <mat-progress-spinner 
-      [diameter]="200" 
-      class="example-margin" 
-      [value]="value">
+      <mat-progress-spinner
+        [diameter]="200"
+        class="example-margin"
+        [value]="value"
+      >
       </mat-progress-spinner>
-      <div style="position:relative; top: -108px; left: 5px;"> {{value}}% </div>
+      <div style="position: relative; top: -108px; left: 5px">{{ value }}%</div>
     </div>
     <!--     <p-progressBar  [value]="value"></p-progressBar> -->
   </div>
