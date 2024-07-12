@@ -18,6 +18,11 @@ export class MainPageComponent implements OnInit {
         icon: 'pi pi-fw pi-calendar',
         routerLink: 'ejercicios',
       },
+      {
+        label: 'Rutinas',
+        icon: 'pi pi-fw pi-calendar',
+        routerLink: 'rutinas',
+      },
       { label: 'Usuarios', icon: 'pi pi-fw pi-pencil', routerLink: 'usuarios' },
     ];
 

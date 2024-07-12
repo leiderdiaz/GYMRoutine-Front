@@ -6,6 +6,7 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
 import { MembresiaComponent } from './pages/membresia/membresia.component';
 import { EjerciciosComponent } from './pages/ejercicios/ejercicios.component';
 import { ConsultaUsuariosComponent } from './pages/consulta-usuarios/consulta-usuarios.component';
+import { RutinasComponent } from './pages/rutinas/rutinas.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   {
@@ -15,6 +16,7 @@ const routes: Routes = [
       { path: 'membresia', component: MembresiaComponent },
       { path: 'ejercicios', component: EjerciciosComponent },
       { path: 'usuarios', component: ConsultaUsuariosComponent },
+      { path: 'rutinas', component: RutinasComponent}
     ],
   },
   { path: 'login', component: LoginComponent },

@@ -1,1 +1,61 @@
-<p>rutinas works!</p>
+<br />
+<div class="filter-section" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.gt-sm="space-between start">
+    <div fxFill fxFlex="49">
+        <label for="tipo">Filtrar por tipo:</label>
+        <mat-select id="tipo" [(ngModel)]="tipoSeleccionado" placeholder="Sin filtro">
+            <mat-option [value]="">Sin filtro</mat-option>
+            <mat-option *ngFor="let tipo of tipos" [value]="tipo.nombre">
+                {{ tipo.nombre }}
+            </mat-option>
+        </mat-select>
+    </div>
+
+    <div fxFill fxFlex="49">
+        <label for="dificultad">Filtrar por dificultad:</label>
+        <mat-select id="dificultad" [(ngModel)]="dificultadSeleccionada" placeholder="Sin filtro">
+            <mat-option [value]="">Sin filtro</mat-option>
+            <mat-option *ngFor="let dificultad of dificultades" [value]="dificultad.nombre">
+                {{ dificultad.nombre }}
+            </mat-option>
+        </mat-select>
+    </div>
+</div>
+<div fxLayoutAlign.gt-sm="space-between start" gdAlignColumns="center" gdAlignRows="center">
+    <button mat-stroked-button color="primary" (click)="getRutinas()" class="btn-block">
+        Filtrar
+    </button>
+</div>
+
+<div fxLayoutAlign.gt-sm="space-between start" gdAlignColumns="center" gdAlignRows="center">
+    <h2>Listado de Rutinas</h2>
+</div>
+<div *ngIf="dataSource">
+    <mat-table class="mat-elevation-z8" [dataSource]="dataSource">
+        <ng-container matColumnDef="nombre">
+            <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.nombre }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="username">
+            <mat-header-cell *matHeaderCellDef>Usuario</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.username }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="tipo">
+            <mat-header-cell *matHeaderCellDef>Musculos Trabajados</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.tipoRutina.join(', ') }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="dificultad">
+            <mat-header-cell *matHeaderCellDef>Dificultad</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.dificultadRutina }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="ejercicios">
+            <mat-header-cell *matHeaderCellDef>Ejercicios</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <div *ngFor="let ejercicio of row.ejercicios">
+                    {{ ejercicio.nombre }} - {{ ejercicio.tipoEjercicio }} - {{ ejercicio.dificultadEjercicio }}
+                </div>
+            </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+</div>
